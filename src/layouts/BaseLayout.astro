@@ -1,0 +1,53 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  pageType?: "website" | "article";
+}
+
+const { title, description, pageType = "website" } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content="landing pages, diseno web para negocios, paginas web para microempresas, landing page para servicios, agencia de landing pages"
+    />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={canonicalURL} />
+
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:type" content={pageType} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:site_name" content="Landing Studio" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="theme-color" content="#ffffff" />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      name: "Landing Studio",
+      description,
+      url: Astro.site,
+      areaServed: "Latam",
+      serviceType: "Creacion de landing pages para negocios y microempresas",
+    })}></script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
