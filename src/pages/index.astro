@@ -33,6 +33,13 @@ const projects = [
     description:
       "Pagina informativa para una microempresa de poder terapeutico, enfocada en mostrar como el yoga, el sonido y la vibracion pueden ayudar a recuperar la armonia del cuerpo y la mente.",
   },
+  {
+    name:  "Barber Studio",
+    type: "Servicios",
+    url: "https://barber-topaz-chi.vercel.app/",
+    description:
+    "Landing page para una barberia, con un diseño moderno y masculino, enfocada en mostrar los servicios, precios y generar confianza para convertir visitantes en clientes.",
+  }
 ];
 ---
 
@@ -272,12 +279,14 @@ const projects = [
                 <span class="h-3 w-3 rounded-full bg-slate-300"></span>
                 <span class="h-3 w-3 rounded-full bg-slate-300"></span>
               </div>
-              <iframe
-                src={project.url}
-                title={`Preview del proyecto ${project.name}`}
-                class="h-85 w-full bg-white"
-                loading="lazy"
-              ></iframe>
+              <div class="h-85 overflow-hidden bg-white">
+                <iframe
+                  src={project.url}
+                  title={`Preview del proyecto ${project.name}`}
+                  class="h-141.5 w-[166.667%] origin-top-left scale-[0.6] bg-white"
+                  loading="lazy"
+                ></iframe>
+              </div>
             </div>
 
             <div class="grid gap-2">
