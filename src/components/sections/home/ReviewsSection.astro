@@ -1,0 +1,60 @@
+---
+import type { Review } from "../../../types/content";
+import SectionIntro from "../../ui/SectionIntro.astro";
+
+interface Props {
+  reviews: Review[];
+}
+
+const { reviews } = Astro.props;
+const reviewTrack = [...reviews, ...reviews];
+---
+
+<section class="relative z-10 mt-15 overflow-hidden rounded-[38px] border border-white/70 bg-white/82 px-4 py-6 shadow-[0_28px_90px_rgba(139,92,246,0.08)] backdrop-blur-sm sm:px-7 sm:py-8 md:px-10 md:py-10"
+  id="reviews"
+>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_12%_18%,rgba(79,110,247,0.06),transparent_22%),radial-gradient(circle_at_88%_84%,rgba(139,92,246,0.12),transparent_24%)]"
+  ></div>
+
+  <div class="relative mb-7">
+    <SectionIntro
+      eyebrow="Reseñas"
+      title="Clientes que ya dieron el salto digital"
+    />
+  </div>
+
+  <div class="group relative overflow-hidden rounded-[26px] border border-[#ece6ff] bg-white/55 p-0.5 shadow-[inset_0_1px_0_rgba(255,255,255,0.7)]">
+    <div class="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-16 bg-[linear-gradient(90deg,rgba(255,255,255,1),rgba(255,255,255,0))] sm:block"></div>
+    <div class="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-16 bg-[linear-gradient(270deg,rgba(255,255,255,1),rgba(255,255,255,0))] sm:block"></div>
+
+    <div class="flex w-max gap-2 rounded-[24px] bg-[linear-gradient(180deg,rgba(255,255,255,0.7),rgba(250,247,255,0.86))] p-3 animate-[review-marquee_22s_linear_infinite] sm:gap-4 sm:p-5 sm:animate-[review-marquee_24s_linear_infinite] sm:group-hover:[animation-play-state:paused]">
+      {
+        reviewTrack.map((review) => (
+          <article class="flex min-h-[224px] w-[296px] shrink-0 flex-col rounded-[24px] border border-[#ece6ff] bg-white px-4 py-4 shadow-[0_14px_30px_rgba(139,92,246,0.08)] sm:w-[320px] sm:px-5 sm:py-5">
+            <div class="mb-5 flex gap-1 text-lg text-[#7C3AED]">
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+            </div>
+            <p class="m-0 text-[0.98rem] leading-8 text-slate-600">
+              "{review.quote}"
+            </p>
+            <footer class="mt-auto flex items-center gap-3 border-t border-[#ece6ff] pt-5">
+              <div class="flex h-12 w-12 items-center justify-center rounded-full bg-[linear-gradient(135deg,#7C3AED,#EC4899)] text-base font-semibold text-white">
+                {review.author.charAt(0)}
+              </div>
+              <div class="grid gap-0.5">
+                <strong class="text-[1rem] text-slate-800">{review.author}</strong>
+                <span class="text-sm text-slate-500">{review.role}</span>
+              </div>
+            </footer>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

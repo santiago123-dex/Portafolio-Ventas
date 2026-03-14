@@ -45,3 +45,26 @@
     @apply rounded-[22px] border border-line bg-white/70;
   }
 }
+
+@layer utilities {
+  .hero-shell::before {
+    content: "";
+    position: absolute;
+    inset: 5% auto auto 8%;
+    width: min(42vw, 480px);
+    height: min(42vw, 480px);
+    border-radius: 9999px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+    pointer-events: none;
+  }
+}
+
+@keyframes review-marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}

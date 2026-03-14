@@ -1,0 +1,39 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description?: string;
+  align?: "left" | "center";
+  compact?: boolean;
+}
+
+const {
+  eyebrow,
+  title,
+  description,
+  align = "left",
+  compact = false,
+} = Astro.props;
+
+const wrapperClass =
+  align === "center" ? "text-center md:text-center" : "text-left";
+---
+
+<div class:list={["relative", wrapperClass]}>
+  <p class="mb-3 text-[0.78rem] font-extrabold uppercase tracking-[0.22em] text-[#7C3AED]">
+    {eyebrow}
+  </p>
+  <h2
+    class:list={[
+      "font-semibold tracking-[-0.05em] text-slate-900 text-balance",
+      compact
+        ? "text-[clamp(1.9rem,8vw,3rem)] leading-[1.02]"
+        : "text-[clamp(1.9rem,8vw,4rem)] leading-[0.95]",
+    ]}
+  >
+    {title}
+  </h2>
+  {description && (
+    <p class="m-0 mt-3 text-[0.96rem] leading-6 text-muted">{description}</p>
+  )}
+</div>

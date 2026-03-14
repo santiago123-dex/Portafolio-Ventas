@@ -1,0 +1,76 @@
+---
+import type { HeroContent } from "../../../types/content";
+import ButtonLink from "../../ui/ButtonLink.astro";
+import HeroArtwork from "./HeroArtwork.astro";
+
+interface Props {
+  content: HeroContent;
+}
+
+const { content } = Astro.props;
+---
+
+<section class="hero-shell relative z-10 overflow-hidden px-2 py-10 sm:px-4 sm:py-14 md:px-8 md:py-20 xl:px-0 xl:py-24">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute left-[-8%] top-0 h-[220px] w-[220px] rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.12),transparent_70%)] blur-3xl sm:h-[320px] sm:w-[320px]"
+  ></div>
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute right-[10%] top-[26%] h-[320px] w-[320px] rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.2),transparent_70%)] blur-3xl sm:h-[420px] sm:w-[420px] xl:h-[520px] xl:w-[520px]"
+  ></div>
+
+  <div class="relative mx-auto max-w-[1180px] justify-items-center xl:grid xl:min-h-[72vh] xl:grid-cols-[430px_400px] xl:items-center xl:justify-center xl:gap-[100px]">
+
+    <div class="max-w-[760px] text-left xl:max-w-[620px] xl:min-w-[620px] xl:self-center">
+      <div class="flex w-full flex-col text-left">
+        <p class="mb-4 text-[0.8rem] font-extrabold uppercase tracking-[0.25em] text-[#7C3AED] xl:hidden">
+          {content.eyebrow}
+        </p>
+        <h1 class=" text-[clamp(2.9rem,10vw,5.6rem)] font-semibold leading-[0.9] tracking-[-0.085em] text-[#8B5CF6] xl:max-w-[10ch] xl:text-[4.85rem]">
+          {content.title.map((line) => <span class="block">{line}</span>)}
+        </h1>
+        <p class="mt-7 text-[1.04rem] leading-8 text-slate-600 sm:text-[1.18rem] sm:leading-9 xl:max-w-[34ch] xl:text-[1.05rem] xl:leading-[1.85]">
+          {content.description}
+        </p>
+
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row xl:mt-9">
+          <ButtonLink href={content.primaryCta.href} variant="primary" minWidthClass="xl:min-w-[182px]">
+            {content.primaryCta.label}
+          </ButtonLink>
+          <ButtonLink href={content.secondaryCta.href} variant="secondary" minWidthClass="xl:min-w-[158px]">
+            {content.secondaryCta.label}
+          </ButtonLink>
+        </div>
+      </div>
+    </div>
+
+    <aside class="relative mx-auto mt-12 w-full max-w-[740px] rounded-[32px] border border-white/85 bg-white/90 p-5 shadow-[0_30px_90px_rgba(139,92,246,0.14)] backdrop-blur-sm sm:mt-14 sm:p-6 md:p-7 xl:-translate-y-1 xl:mt-0 xl:w-[400px] xl:max-w-[400px] xl:justify-self-center xl:p-5">
+      <div
+        aria-hidden="true"
+        class="pointer-events-none absolute inset-x-10 -bottom-10 h-24 rounded-full bg-[radial-gradient(circle,rgba(139,92,246,0.24),transparent_72%)] blur-2xl"
+      ></div>
+      <div class="relative rounded-[28px] bg-[linear-gradient(180deg,#fffefe_0%,#f8f4ff_100%)] px-5 py-5 sm:px-7 sm:py-6 xl:px-5 xl:py-5">
+        <p class="text-[0.82rem] font-extrabold uppercase tracking-[0.28em] text-[#6D28D9]">
+          {content.eyebrow}
+        </p>
+        <h2 class="mt-3 text-[clamp(1.9rem,5vw,3rem)] font-semibold leading-none tracking-[-0.05em] text-slate-900 xl:text-[2rem]">
+          {content.cardTitle}
+        </h2>
+
+        <div class="mt-6 rounded-[24px] border border-[#ece6ff] bg-white p-4 sm:p-5 xl:p-4">
+          <div class="relative overflow-hidden rounded-[20px] bg-[linear-gradient(180deg,#ffffff_0%,#faf7ff_100%)] px-3 pb-4 pt-6 sm:px-5 sm:pb-5 sm:pt-8 xl:px-3 xl:pb-4 xl:pt-6">
+            <div
+              class="absolute inset-x-0 top-0 h-28 bg-[radial-gradient(circle_at_50%_0%,rgba(139,92,246,0.12),transparent_70%)]"
+            ></div>
+            <HeroArtwork />
+          </div>
+        </div>
+
+        <p class="mt-4 max-w-[48ch] text-[0.98rem] leading-8 text-slate-600 xl:max-w-[31ch] xl:text-[0.95rem] xl:leading-7">
+          {content.cardDescription}
+        </p>
+      </div>
+    </aside>
+  </div>
+</section>

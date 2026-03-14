@@ -1,0 +1,27 @@
+---
+interface Props {
+  href: string;
+  variant?: "primary" | "secondary";
+  minWidthClass?: string;
+}
+
+const {
+  href,
+  variant = "primary",
+  minWidthClass = "",
+} = Astro.props;
+
+const baseClass =
+  "inline-flex min-h-14 items-center justify-center rounded-[16px] px-8 py-4 text-base font-semibold transition-transform";
+
+const variants = {
+  primary:
+    "border border-[#28123f] bg-[linear-gradient(135deg,#7C3AED,#8B5CF6)] text-white shadow-[0_14px_28px_rgba(124,58,237,0.24)] hover:-translate-y-0.5",
+  secondary:
+    "border border-[#d6ddf1] bg-white/92 text-slate-700 shadow-[0_10px_24px_rgba(148,163,184,0.06)] hover:border-[#8B5CF6]/35 hover:text-[#8B5CF6]",
+} as const;
+---
+
+<a class:list={[baseClass, variants[variant], minWidthClass]} href={href}>
+  <slot />
+</a>
