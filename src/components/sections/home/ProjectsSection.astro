@@ -1,0 +1,67 @@
+---
+import type { Project } from "../../../types/content";
+import SectionIntro from "../../ui/SectionIntro.astro";
+
+interface Props {
+  projects: Project[];
+}
+
+const { projects } = Astro.props;
+---
+
+<section
+  id="projects"
+  class="surface-card relative z-10 mt-15 rounded-[32px] p-4 sm:p-5 md:p-6"
+>
+  <div class="mb-6 grid gap-4 text-center md:grid-cols-[minmax(0,1fr)_minmax(220px,320px)] md:items-end md:text-left">
+    <div class="mx-auto md:mx-0">
+      <SectionIntro
+        eyebrow="Proyectos"
+        title="Ejemplos pensados para negocios de servicios."
+        compact={true}
+      />
+    </div>
+  </div>
+
+  <div class="grid gap-4 lg:grid-cols-2">
+    {
+      projects.map((project) => (
+        <article class="surface-soft overflow-hidden p-3 md:p-4">
+          <div class="mb-4 overflow-hidden rounded-[20px] border border-line bg-white">
+            <div class="flex items-center gap-2 border-b border-line px-4 py-3">
+              <span class="h-3 w-3 rounded-full bg-slate-300"></span>
+              <span class="h-3 w-3 rounded-full bg-slate-300"></span>
+              <span class="h-3 w-3 rounded-full bg-slate-300"></span>
+            </div>
+            <div class="h-[190px] overflow-hidden bg-white sm:h-[300px] md:h-[340px]">
+              <iframe
+                src={project.url}
+                title={`Preview del proyecto ${project.name}`}
+                class="h-[380px] w-[210%] origin-top-left scale-[0.47] bg-white sm:h-[500px] sm:w-[175%] sm:scale-[0.57] md:h-[566px] md:w-[166.667%] md:scale-[0.6]"
+                loading="lazy"
+              ></iframe>
+            </div>
+          </div>
+
+          <div class="grid gap-2 text-center md:text-left">
+            <p class="m-0 text-[0.76rem] font-extrabold uppercase tracking-widest text-accent">
+              {project.type}
+            </p>
+            <h3 class="text-[1.2rem] leading-7 sm:text-[1.35rem]">{project.name}</h3>
+            <p class="m-0 max-w-[70ch] text-[0.94rem] leading-7 text-muted sm:text-[0.96rem]">
+              {project.description}
+            </p>
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noreferrer"
+              class="mt-2 text-sm font-semibold text-[#8B5CF6] underline-offset-4 hover:underline"
+            >
+              Ver proyecto
+            </a>
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>

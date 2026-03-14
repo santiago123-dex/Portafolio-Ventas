@@ -1,0 +1,75 @@
+---
+import type { ContactInfo } from "../../../types/content";
+import SectionIntro from "../../ui/SectionIntro.astro";
+
+interface Props {
+  contact: ContactInfo;
+}
+
+const { contact } = Astro.props;
+---
+
+<section
+  id="contact"
+  class="relative z-10 mb-15 mt-15 grid gap-4 xl:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]"
+>
+  <div class="surface-card rounded-[32px] p-5 text-center sm:p-6 md:text-left">
+    <SectionIntro
+      eyebrow="Contacto"
+      title="Hablemos de tu landing."
+      compact={true}
+    />
+    <p class="mt-4 max-w-[52ch] text-[0.96rem] leading-7 text-muted">
+      Estas son las maneras en que nos puedes contactar. Si quieres una landing
+      personalizada para tu negocio, solo tienes que escribirnos y te guiaremos
+      en el proceso.
+    </p>
+    <div class="mt-6 flex flex-col gap-2">
+      <a class="inline-block text-[1.05rem] font-extrabold text-accent" href={`mailto:${contact.email}`}>
+        {contact.email}
+      </a>
+      <p class="m-0 text-muted">
+        {contact.phoneLabel}: <span class="text-[1.05rem] font-extrabold text-accent">{contact.phone}</span>
+      </p>
+    </div>
+  </div>
+
+  <form
+    class="surface-card grid gap-4 rounded-[32px] p-5 sm:p-6"
+    aria-label="Formulario de contacto"
+  >
+    <label class="grid gap-2 text-sm text-muted">
+      Nombre
+      <input
+        class="w-full rounded-2xl border border-line-strong bg-white px-4 py-3 text-text outline-none transition-colors focus:border-[rgba(109,73,246,0.35)]"
+        type="text"
+        name="name"
+        placeholder="Tu nombre"
+      />
+    </label>
+    <label class="grid gap-2 text-sm text-muted">
+      Email
+      <input
+        class="w-full rounded-2xl border border-line-strong bg-white px-4 py-3 text-text outline-none transition-colors focus:border-[rgba(109,73,246,0.35)]"
+        type="email"
+        name="email"
+        placeholder="tu@negocio.com"
+      />
+    </label>
+    <label class="grid gap-2 text-sm text-muted">
+      Tu negocio
+      <textarea
+        class="w-full rounded-2xl border border-line-strong bg-white px-4 py-3 text-text outline-none transition-colors focus:border-[rgba(109,73,246,0.35)]"
+        name="message"
+        rows="4"
+        placeholder="Que vendes y que objetivo tienes."
+      ></textarea>
+    </label>
+    <button
+      class="inline-flex min-h-12 w-full items-center justify-center rounded-full bg-accent px-5 py-3 text-sm font-bold text-white shadow-[0_16px_32px_rgba(109,73,246,0.22)] transition-transform hover:-translate-y-0.5 hover:bg-[#8B5CF6] sm:w-auto"
+      type="submit"
+    >
+      Solicitar informacion
+    </button>
+  </form>
+</section>
