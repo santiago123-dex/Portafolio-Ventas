@@ -1,0 +1,156 @@
+---
+import type { ContactInfo } from "../../types/types";
+import SectionIntro from "../SectionIntro.astro";
+
+interface Props {
+  contact: ContactInfo;
+}
+
+const { contact } = Astro.props;
+const whatsappNumber = contact.phone.replace(/\D/g, "");
+const whatsappMessage = encodeURIComponent(
+  "Hola, quiero informacion sobre mi sitio web."
+);
+const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+---
+
+<section
+  id="contact"
+  class="relative z-10 mb-15 mt-18"
+>
+  <div class="mx-auto max-w-[1120px]">
+    <div class="mx-auto max-w-[760px] text-center">
+      <SectionIntro
+        eyebrow="Contacto"
+        title="Trabajemos juntos"
+        compact={true}
+        align="center"
+      />
+      <p class="mt-4 text-[1rem] leading-8 text-muted sm:text-[1.06rem]">
+        Tienes un proyecto en mente? Me encantaria escuchar tus ideas y ayudarte
+        a convertirlas en una pagina clara, atractiva y lista para vender.
+      </p>
+    </div>
+
+    <div class="mt-10 grid gap-6 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] xl:items-start">
+      <div class="grid gap-6">
+        <div class="rounded-[32px] bg-white/72 p-6 shadow-[0_24px_60px_rgba(109,73,246,0.08)] backdrop-blur-sm sm:p-8">
+          <h3 class="text-[clamp(1.7rem,5vw,2.2rem)] font-semibold tracking-[-0.04em] text-slate-900">
+            Informacion de contacto
+          </h3>
+          <div class="mt-8 grid gap-5">
+            <div class="flex items-start gap-4">
+              <div class="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgba(124,58,237,0.14),rgba(139,92,246,0.08))] text-[#7C3AED]">
+                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M4 7.5L12 13l8-5.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                  <rect x="3" y="5" width="18" height="14" rx="3" stroke-linecap="round" stroke-linejoin="round"></rect>
+                </svg>
+              </div>
+              <div class="grid gap-1">
+                <span class="text-[0.92rem] font-semibold text-slate-500">Email</span>
+                <a class="text-[1.05rem] font-semibold text-slate-800 hover:text-[#7C3AED]" href={`mailto:${contact.email}`}>
+                  {contact.email}
+                </a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(135deg,rgba(124,58,237,0.14),rgba(139,92,246,0.08))] text-[#7C3AED]">
+                <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+                  <path d="M5.5 4.5H8l1.5 4-2 1.5a15 15 0 0 0 6 6L15 14l4 1.5v2.5A2 2 0 0 1 17 20C10.4 20 5 14.6 5 8a2 2 0 0 1 .5-3.5Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+              </div>
+              <div class="grid gap-1">
+                <span class="text-[0.92rem] font-semibold text-slate-500">{contact.phoneLabel}</span>
+                <a class="text-[1.05rem] font-semibold text-slate-800 hover:text-[#7C3AED]" href={whatsappHref} target="_blank" rel="noreferrer">
+                  {contact.phone}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="rounded-[32px] border border-white/80 bg-[linear-gradient(180deg,rgba(248,244,255,0.92),rgba(255,255,255,0.9))] p-6 shadow-[0_24px_70px_rgba(109,73,246,0.08)] sm:p-8">
+          <h3 class="text-[clamp(1.5rem,4vw,2rem)] font-semibold tracking-[-0.04em] text-slate-900">
+            Listo para empezar?
+          </h3>
+          <p class="mt-4 text-[0.98rem] leading-8 text-muted">
+            Si prefieres una respuesta rapida, escribeme directo por WhatsApp y
+            te cuento como podemos armar tu sitio.
+          </p>
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+            class="mt-6 inline-flex min-h-13 w-full items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#7C3AED,#8B5CF6)] px-5 py-3 text-sm font-bold text-white shadow-[0_18px_36px_rgba(124,58,237,0.22)] transition-transform hover:-translate-y-0.5"
+          >
+            Contactarme al WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <form
+        class="rounded-[32px] border border-[#e7ddff] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(247,243,255,0.92))] p-6 shadow-[0_28px_80px_rgba(109,73,246,0.1)] sm:p-8"
+        aria-label="Formulario de contacto"
+      >
+        <h3 class="text-[clamp(1.7rem,4vw,2.2rem)] font-semibold tracking-[-0.04em] text-slate-900">
+          Enviame un mensaje
+        </h3>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          <label class="grid gap-2 text-sm text-muted">
+            Nombre
+            <input
+              class="w-full rounded-2xl border border-[#e5ddfb] bg-white/92 px-4 py-3 text-text outline-none transition-colors focus:border-[rgba(109,73,246,0.35)]"
+              type="text"
+              name="name"
+              placeholder="Tu nombre"
+            />
+          </label>
+          <label class="grid gap-2 text-sm text-muted">
+            Email
+            <input
+              class="w-full rounded-2xl border border-[#e5ddfb] bg-white/92 px-4 py-3 text-text outline-none transition-colors focus:border-[rgba(109,73,246,0.35)]"
+              type="email"
+              name="email"
+              placeholder="tu@email.com"
+            />
+          </label>
+        </div>
+        <label class="mt-4 grid gap-2 text-sm text-muted">
+          Asunto
+          <input
+            class="w-full rounded-2xl border border-[#e5ddfb] bg-white/92 px-4 py-3 text-text outline-none transition-colors focus:border-[rgba(109,73,246,0.35)]"
+            type="text"
+            name="subject"
+            placeholder="En que puedo ayudarte?"
+          />
+        </label>
+        <label class="mt-4 grid gap-2 text-sm text-muted">
+          Mensaje
+          <textarea
+            class="w-full rounded-2xl border border-[#e5ddfb] bg-white/92 px-4 py-3 text-text outline-none transition-colors focus:border-[rgba(109,73,246,0.35)]"
+            name="message"
+            rows="6"
+            placeholder="Cuentame sobre tu negocio, que vendes y que objetivo tienes."
+          ></textarea>
+        </label>
+        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+          <button
+            class="inline-flex min-h-13 w-full items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#7C3AED,#8B5CF6)] px-5 py-3 text-sm font-bold text-white shadow-[0_18px_36px_rgba(124,58,237,0.22)] transition-transform hover:-translate-y-0.5 sm:w-auto"
+            type="submit"
+          >
+            Enviar mensaje
+          </button>
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+            class="inline-flex min-h-13 w-full items-center justify-center rounded-2xl border border-[#d9cdfc] bg-white/88 px-5 py-3 text-sm font-bold text-[#6D28D9] transition-colors hover:border-[#8B5CF6]/40 hover:text-[#8B5CF6] sm:w-auto"
+          >
+            O escribir por WhatsApp
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

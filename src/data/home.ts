@@ -1,4 +1,4 @@
-import type { HomePageContent } from "../../types/content";
+import type { HomePageContent } from "../types/types";
 
 export const homePageContent: HomePageContent = {
   seo: {
