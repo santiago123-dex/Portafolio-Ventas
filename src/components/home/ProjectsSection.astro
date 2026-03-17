@@ -1,6 +1,6 @@
 ---
-import type { Project } from "../../../types/content";
-import SectionIntro from "../../ui/SectionIntro.astro";
+import type { Project } from "../../types/types";
+import SectionIntro from "../SectionIntro.astro";
 
 interface Props {
   projects: Project[];
@@ -21,6 +21,9 @@ const { projects } = Astro.props;
         compact={true}
       />
     </div>
+    <p class="m-0 text-[0.96rem] leading-6 text-muted">
+      Cada landing se adapta a tu oferta y cliente ideal.
+    </p>
   </div>
 
   <div class="grid gap-4 lg:grid-cols-2">
