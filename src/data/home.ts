@@ -60,7 +60,7 @@ export const homePageContent: HomePageContent = {
     {
       name: "Landing Mecanic",
       type: "Servicios",
-      url: "https://landing-mecanic.vercel.app",
+      url: "https://landing-nasa-mecanic.vercel.app/",
       description:
         "Landing page para un negocio del sector mecanico, pensada para presentar servicios de forma clara, transmitir confianza y facilitar el contacto con nuevos clientes.",
     },
