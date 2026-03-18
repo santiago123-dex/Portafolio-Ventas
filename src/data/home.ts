@@ -57,6 +57,13 @@ export const homePageContent: HomePageContent = {
       description:
         "Landing page para una barberia, con un diseno moderno y masculino, enfocada en mostrar los servicios, precios y generar confianza para convertir visitantes en clientes.",
     },
+    {
+      name: "Landing Mecanic",
+      type: "Servicios",
+      url: "https://landing-mecanic.vercel.app",
+      description:
+        "Landing page para un negocio del sector mecanico, pensada para presentar servicios de forma clara, transmitir confianza y facilitar el contacto con nuevos clientes.",
+    },
   ],
   contact: {
     email: "santiagofajardomorales17@gmail.com",
