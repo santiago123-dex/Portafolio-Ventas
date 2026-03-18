@@ -18,7 +18,7 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
   id="contact"
   class="relative z-10 mb-15 mt-18"
 >
-  <div class="mx-auto max-w-[1120px]">
+  <div class="mx-auto max-w-[1120px] px-1 sm:px-0">
     <div class="mx-auto max-w-[760px] text-center">
       <SectionIntro
         eyebrow="Contacto"
@@ -32,10 +32,10 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
       </p>
     </div>
 
-    <div class="mt-10 grid gap-6 xl:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] xl:items-start">
+    <div class="mt-10 grid gap-6 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
       <div class="grid gap-6">
         <div class="rounded-[32px] bg-white/72 p-6 shadow-[0_24px_60px_rgba(109,73,246,0.08)] backdrop-blur-sm sm:p-8">
-          <h3 class="text-[clamp(1.7rem,5vw,2.2rem)] font-semibold tracking-[-0.04em] text-slate-900">
+          <h3 class="text-[clamp(1.55rem,5vw,2.2rem)] font-semibold tracking-[-0.04em] text-slate-900">
             Informacion de contacto
           </h3>
           <div class="mt-8 grid gap-5">
@@ -46,9 +46,9 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
                   <rect x="3" y="5" width="18" height="14" rx="3" stroke-linecap="round" stroke-linejoin="round"></rect>
                 </svg>
               </div>
-              <div class="grid gap-1">
+              <div class="grid min-w-0 gap-1">
                 <span class="text-[0.92rem] font-semibold text-slate-500">Email</span>
-                <a class="text-[1.05rem] font-semibold text-slate-800 hover:text-[#7C3AED]" href={`mailto:${contact.email}`}>
+                <a class="break-all text-[0.98rem] font-semibold text-slate-800 hover:text-[#7C3AED] sm:text-[1.05rem]" href={`mailto:${contact.email}`}>
                   {contact.email}
                 </a>
               </div>
@@ -60,9 +60,9 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
                   <path d="M5.5 4.5H8l1.5 4-2 1.5a15 15 0 0 0 6 6L15 14l4 1.5v2.5A2 2 0 0 1 17 20C10.4 20 5 14.6 5 8a2 2 0 0 1 .5-3.5Z" stroke-linecap="round" stroke-linejoin="round"></path>
                 </svg>
               </div>
-              <div class="grid gap-1">
+              <div class="grid min-w-0 gap-1">
                 <span class="text-[0.92rem] font-semibold text-slate-500">{contact.phoneLabel}</span>
-                <a class="text-[1.05rem] font-semibold text-slate-800 hover:text-[#7C3AED]" href={whatsappHref} target="_blank" rel="noreferrer">
+                <a class="break-words text-[0.98rem] font-semibold text-slate-800 hover:text-[#7C3AED] sm:text-[1.05rem]" href={whatsappHref} target="_blank" rel="noreferrer">
                   {contact.phone}
                 </a>
               </div>
@@ -90,10 +90,10 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
       </div>
 
       <form
-        class="rounded-[32px] border border-[#e7ddff] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(247,243,255,0.92))] p-6 shadow-[0_28px_80px_rgba(109,73,246,0.1)] sm:p-8"
+        class="rounded-[32px] border border-[#e7ddff] bg-[linear-gradient(180deg,rgba(255,255,255,0.95),rgba(247,243,255,0.92))] p-5 shadow-[0_28px_80px_rgba(109,73,246,0.1)] sm:p-8"
         aria-label="Formulario de contacto"
       >
-        <h3 class="text-[clamp(1.7rem,4vw,2.2rem)] font-semibold tracking-[-0.04em] text-slate-900">
+        <h3 class="text-[clamp(1.55rem,4vw,2.2rem)] font-semibold tracking-[-0.04em] text-slate-900">
           Enviame un mensaje
         </h3>
         <div class="mt-8 grid gap-4 sm:grid-cols-2">
@@ -134,9 +134,9 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
             placeholder="Cuentame sobre tu negocio, que vendes y que objetivo tienes."
           ></textarea>
         </label>
-        <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+        <div class="mt-6 grid gap-3 sm:grid-cols-2">
           <button
-            class="inline-flex min-h-13 w-full items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#7C3AED,#8B5CF6)] px-5 py-3 text-sm font-bold text-white shadow-[0_18px_36px_rgba(124,58,237,0.22)] transition-transform hover:-translate-y-0.5 sm:w-auto"
+            class="inline-flex min-h-13 w-full items-center justify-center rounded-2xl bg-[linear-gradient(135deg,#7C3AED,#8B5CF6)] px-5 py-3 text-center text-sm font-bold text-white shadow-[0_18px_36px_rgba(124,58,237,0.22)] transition-transform hover:-translate-y-0.5"
             type="submit"
           >
             Enviar mensaje
@@ -145,7 +145,7 @@ const whatsappHref = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
             href={whatsappHref}
             target="_blank"
             rel="noreferrer"
-            class="inline-flex min-h-13 w-full items-center justify-center rounded-2xl border border-[#d9cdfc] bg-white/88 px-5 py-3 text-sm font-bold text-[#6D28D9] transition-colors hover:border-[#8B5CF6]/40 hover:text-[#8B5CF6] sm:w-auto"
+            class="inline-flex min-h-13 w-full items-center justify-center rounded-2xl border border-[#d9cdfc] bg-white/88 px-5 py-3 text-center text-sm leading-5 font-bold text-[#6D28D9] transition-colors hover:border-[#8B5CF6]/40 hover:text-[#8B5CF6]"
           >
             O escribir por WhatsApp
           </a>
