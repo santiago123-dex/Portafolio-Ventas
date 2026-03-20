@@ -64,6 +64,13 @@ export const homePageContent: HomePageContent = {
       description:
         "Landing page para un negocio del sector mecanico, pensada para presentar servicios de forma clara, transmitir confianza y facilitar el contacto con nuevos clientes.",
     },
+    {
+      name: "Veterinaria El Bosque",
+      type: "Servicios",
+      url:"https://el-bosque-nine.vercel.app/",
+      description:
+        "Pagina informativa para una veterinaria, con un diseno amigable y profesional, enfocada en mostrar los servicios, el equipo y generar confianza para atraer nuevos clientes.",
+    },
   ],
   contact: {
     email: "santiagofajardomorales17@gmail.com",
